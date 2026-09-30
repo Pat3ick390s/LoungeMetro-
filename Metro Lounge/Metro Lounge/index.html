@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#173b2d">
+  <meta name="description" content="Good food, good company, and room to unwind at Metro Lounge by Rohi.">
+  <title>Metro Lounge by Rohi | Good things happen here</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light;
+      --forest: #173b2d;
+      --forest-deep: #102c22;
+      --paper: #f4f0e7;
+      --ink: #20251f;
+      --muted: #666b60;
+      --clay: #c65c3a;
+      --lime: #c9d59b;
+      --line: rgba(32, 37, 31, .17);
+      --serif: "Fraunces", Georgia, serif;
+      --sans: "DM Sans", "Helvetica Neue", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); }
+    a { color: inherit; }
+    button, input, select, textarea { font: inherit; }
+    img { display: block; width: 100%; object-fit: cover; }
+    .site-header {
+      position: absolute;
+      z-index: 5;
+      top: 0;
+      left: 0;
+      display: flex;
+      width: 100%;
+      align-items: center;
+      justify-content: space-between;
+      padding: 26px 6.5%;
+      color: #fff;
+    }
+    .wordmark { display: inline-flex; align-items: center; gap: 11px; text-decoration: none; }
+    .wordmark-seal {
+      display: grid;
+      width: 39px;
+      height: 39px;
+      place-items: center;
+      border: 1px solid rgba(255,255,255,.72);
+      border-radius: 50%;
+      font-family: var(--serif);
+      font-size: 19px;
+    }
+    .wordmark-name { font-size: 13px; font-weight: 700; line-height: 1.15; }
+    .wordmark-name span { display: block; margin-top: 4px; font-size: 9px; font-weight: 500; letter-spacing: 1px; text-transform: uppercase; }
+    .main-nav { display: flex; align-items: center; gap: 34px; }
+    .main-nav a { color: #fff; font-size: 12px; font-weight: 600; text-decoration: none; }
+    .main-nav a:not(.nav-cta):hover { color: var(--lime); }
+    .main-nav .nav-cta { padding: 13px 17px; background: var(--paper); color: var(--forest); transition: background .2s, color .2s; }
+    .main-nav .nav-cta:hover { background: var(--lime); }
+    .menu-toggle { display: none; border: 1px solid rgba(255,255,255,.7); background: transparent; color: white; padding: 9px 12px; cursor: pointer; }
+
+    .hero {
+      position: relative;
+      display: flex;
+      min-height: 690px;
+      height: 86vh;
+      max-height: 900px;
+      align-items: flex-end;
+      overflow: hidden;
+      background: #343d34 url("IMG_2265.JPG") center 53% / cover no-repeat;
+      color: white;
+    }
+    .hero::before { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(10,24,17,.72) 0%, rgba(10,24,17,.34) 53%, rgba(10,24,17,.06) 100%), linear-gradient(0deg, rgba(10,24,17,.38), transparent 48%); content: ""; }
+    .hero-content { position: relative; z-index: 1; width: min(770px, 88%); margin: 0 0 92px 10%; animation: arrive .8s ease both; }
+    .eyebrow { display: flex; align-items: center; gap: 12px; margin: 0 0 20px; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; }
+    .eyebrow::before { width: 29px; height: 1px; background: var(--lime); content: ""; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1, h2, h3 { font-family: var(--serif); font-weight: 500; }
+    .hero h1 { max-width: 700px; margin-bottom: 20px; font-size: 76px; line-height: .99; }
+    .hero h1 em { color: var(--lime); font-weight: 500; }
+    .hero-copy { max-width: 420px; margin-bottom: 28px; color: rgba(255,255,255,.86); font-size: 15px; line-height: 1.7; }
+    .text-link { display: inline-flex; align-items: center; gap: 14px; min-height: 48px; font-size: 12px; font-weight: 700; text-decoration: none; }
+    .link-arrow { display: grid; width: 34px; height: 34px; place-items: center; border: 1px solid currentColor; border-radius: 50%; font-size: 18px; transition: transform .2s, background .2s; }
+    .text-link:hover .link-arrow { transform: translateX(4px); background: var(--clay); }
+    .hero-index { position: absolute; right: 6.5%; bottom: 46px; z-index: 1; font-size: 10px; letter-spacing: 1.4px; }
+
+    .intro { display: grid; grid-template-columns: .8fr 1.2fr; gap: 9%; align-items: start; padding: 108px 12% 116px; }
+    .intro .eyebrow { color: var(--clay); }
+    .intro .eyebrow::before { background: var(--clay); }
+    .intro h2 { max-width: 390px; margin: 0; font-size: 45px; line-height: 1.08; }
+    .intro-copy { max-width: 560px; padding-top: 33px; }
+    .intro-copy p { color: var(--muted); font-size: 15px; line-height: 1.9; }
+    .intro-copy .text-link { margin-top: 9px; color: var(--forest); }
+
+    .spaces { padding: 85px 7% 108px; background: #e9e5d9; }
+    .section-heading { display: flex; align-items: end; justify-content: space-between; gap: 28px; margin: 0 auto 37px; max-width: 1220px; }
+    .section-heading .eyebrow { margin-bottom: 15px; color: var(--clay); }
+    .section-heading .eyebrow::before { background: var(--clay); }
+    .section-heading h2 { margin: 0; font-size: 49px; line-height: 1; }
+    .section-heading > p { max-width: 295px; margin: 0 0 3px; color: var(--muted); font-size: 13px; line-height: 1.8; }
+    .space-grid { display: grid; max-width: 1220px; margin: 0 auto; grid-template-columns: 1.15fr 1fr 1fr; grid-template-rows: 270px 270px; gap: 14px; }
+    .space-card { position: relative; min-width: 0; overflow: hidden; background: #6d6b5d; color: white; }
+    .space-card:first-child { grid-row: span 2; }
+    .space-card img { height: 100%; transition: transform .65s cubic-bezier(.2,.7,.2,1); }
+    .space-card:hover img { transform: scale(1.04); }
+    .space-card::after { position: absolute; inset: 35% 0 0; background: linear-gradient(0deg, rgba(13,28,20,.8), transparent); content: ""; pointer-events: none; }
+    .space-card-copy { position: absolute; right: 24px; bottom: 21px; left: 24px; z-index: 1; }
+    .space-card-copy span { display: block; margin-bottom: 7px; color: var(--lime); font-size: 9px; font-weight: 700; letter-spacing: 1.4px; text-transform: uppercase; }
+    .space-card-copy h3 { margin: 0; font-size: 31px; }
+    .space-card:first-child .space-card-copy h3 { font-size: 38px; }
+
+    .gather { display: grid; grid-template-columns: 1fr 1fr; min-height: 560px; background: var(--forest); color: white; }
+    .gather-image { min-height: 560px; background: #65594c url("IMG_2265.JPG") center / cover no-repeat; }
+    .gather-content { display: flex; flex-direction: column; justify-content: center; padding: 78px 12%; }
+    .gather-content .eyebrow { color: var(--lime); }
+    .gather-content h2 { max-width: 480px; margin-bottom: 20px; font-size: 53px; line-height: 1.02; }
+    .gather-content p:not(.eyebrow) { max-width: 405px; margin-bottom: 24px; color: rgba(255,255,255,.76); font-size: 14px; line-height: 1.9; }
+    .gather-content .text-link { align-self: flex-start; }
+
+    .contact { display: grid; grid-template-columns: 1fr 1fr; gap: 10%; padding: 105px 12%; }
+    .contact-copy .eyebrow { color: var(--clay); }
+    .contact-copy .eyebrow::before { background: var(--clay); }
+    .contact-copy h2 { max-width: 400px; margin-bottom: 20px; font-size: 48px; line-height: 1.04; }
+    .contact-copy > p:not(.eyebrow) { max-width: 365px; color: var(--muted); font-size: 14px; line-height: 1.8; }
+    .contact-form { display: grid; grid-template-columns: 1fr 1fr; align-content: center; gap: 19px 16px; }
+    .field { display: flex; flex-direction: column; gap: 8px; }
+    .field-full { grid-column: 1 / -1; }
+    .field label { color: var(--muted); font-size: 10px; font-weight: 700; letter-spacing: .7px; text-transform: uppercase; }
+    .field input, .field select, .field textarea { width: 100%; border: 0; border-bottom: 1px solid var(--line); border-radius: 0; outline: none; background: transparent; color: var(--ink); padding: 8px 0 12px; font-size: 13px; }
+    .field input:focus, .field select:focus, .field textarea:focus { border-color: var(--forest); }
+    .field textarea { min-height: 61px; resize: vertical; }
+    .form-submit { display: inline-flex; grid-column: 1 / -1; align-items: center; justify-content: space-between; width: 100%; max-width: 240px; margin-top: 8px; border: 0; background: var(--forest); color: white; padding: 15px 17px; font-size: 12px; font-weight: 700; cursor: pointer; transition: background .2s; }
+    .form-submit:hover { background: var(--clay); }
+    .form-status { grid-column: 1 / -1; margin: -7px 0 0; color: var(--forest); font-size: 12px; line-height: 1.6; }
+
+    .footer { display: flex; align-items: center; justify-content: space-between; gap: 24px; background: var(--forest-deep); color: white; padding: 27px 7%; }
+    .footer .wordmark-seal { width: 34px; height: 34px; font-size: 16px; }
+    .footer .wordmark-name { font-size: 12px; }
+    .footer p { margin: 0; color: rgba(255,255,255,.65); font-size: 10px; }
+    .footer a:last-child { color: white; font-size: 11px; text-decoration: none; }
+    .footer a:last-child:hover { color: var(--lime); }
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .65s ease, transform .65s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+    @keyframes arrive { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: none; } }
+
+    @media (max-width: 800px) {
+      .site-header { padding: 20px 6%; }
+      .menu-toggle { display: block; }
+      .main-nav { position: absolute; top: 72px; right: 6%; left: 6%; display: none; align-items: stretch; gap: 0; background: var(--forest-deep); padding: 10px 20px; }
+      .main-nav.open { display: flex; flex-direction: column; }
+      .main-nav a { padding: 13px 0; }
+      .main-nav .nav-cta { margin: 7px 0 8px; padding: 13px; text-align: center; }
+      .hero { height: 78svh; min-height: 600px; max-height: 740px; background-position: 56% center; }
+      .hero-content { width: 85%; margin: 0 0 83px 7%; }
+      .hero h1 { max-width: 500px; font-size: 61px; }
+      .intro { grid-template-columns: 1fr; gap: 20px; padding: 77px 8% 82px; }
+      .intro h2 { max-width: 520px; font-size: 40px; }
+      .intro-copy { padding-top: 0; }
+      .spaces { padding: 70px 6% 76px; }
+      .section-heading { align-items: start; flex-direction: column; gap: 17px; }
+      .section-heading h2 { font-size: 43px; }
+      .space-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 310px 225px 225px; }
+      .space-card:first-child { grid-row: auto; grid-column: 1 / -1; }
+      .space-card-copy h3 { font-size: 27px; }
+      .space-card:first-child .space-card-copy h3 { font-size: 34px; }
+      .gather { grid-template-columns: 1fr; }
+      .gather-image { min-height: 360px; }
+      .gather-content { padding: 65px 8% 76px; }
+      .gather-content h2 { font-size: 45px; }
+      .contact { grid-template-columns: 1fr; gap: 30px; padding: 76px 8%; }
+      .contact-copy h2 { font-size: 42px; }
+      .footer { padding: 24px 6%; }
+    }
+    @media (max-width: 480px) {
+      .hero { min-height: 580px; height: 76svh; background-position: 59% center; }
+      .hero::before { background: linear-gradient(90deg, rgba(10,24,17,.65), rgba(10,24,17,.12)), linear-gradient(0deg, rgba(10,24,17,.42), transparent 58%); }
+      .hero-content { margin-bottom: 82px; }
+      .hero h1 { font-size: 49px; }
+      .hero-copy { max-width: 330px; font-size: 14px; }
+      .hero-index { right: 7%; bottom: 25px; }
+      .intro h2 { font-size: 36px; }
+      .space-grid { grid-template-rows: 265px 190px 190px; gap: 9px; }
+      .space-card-copy { right: 14px; bottom: 14px; left: 14px; }
+      .space-card-copy h3 { font-size: 22px; }
+      .space-card:first-child .space-card-copy h3 { font-size: 31px; }
+      .space-card-copy span { font-size: 8px; }
+      .gather-image { min-height: 285px; }
+      .contact-form { gap: 17px 12px; }
+      .footer { align-items: flex-start; flex-wrap: wrap; }
+      .footer p { order: 3; width: 100%; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <a class="wordmark" href="#top" aria-label="Metro Lounge by Rohi, home">
+      <span class="wordmark-seal" aria-hidden="true">M</span>
+      <span class="wordmark-name">Metro Lounge<span>by Rohi</span></span>
+    </a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav">Menu</button>
+    <nav class="main-nav" id="main-nav" aria-label="Main navigation">
+      <a href="#about">The lounge</a>
+      <a href="#spaces">Our spaces</a>
+      <a href="#gather">Get together</a>
+      <a class="nav-cta" href="#enquire">Make an enquiry <span aria-hidden="true">&#8599;</span></a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="hero-content">
+        <p class="eyebrow">A place to settle in</p>
+        <h1 id="hero-title">Good things happen <em>here.</em></h1>
+        <p class="hero-copy">Come for a meal, stay for another round. Metro Lounge by Rohi brings good food, good company, and a little room to unwind.</p>
+        <a class="text-link" href="#spaces">Find your kind of corner <span class="link-arrow" aria-hidden="true">&#8594;</span></a>
+      </div>
+      <span class="hero-index">KITCHEN &nbsp; / &nbsp; BAR &nbsp; / &nbsp; LOUNGE</span>
+    </section>
+
+    <section class="intro reveal" id="about">
+      <div>
+        <p class="eyebrow">Metro Lounge by Rohi</p>
+        <h2>A little more room for a good time.</h2>
+      </div>
+      <div class="intro-copy">
+        <p>Some days call for a proper meal. Others call for a long catch-up, a well-made drink, or fresh air and nowhere else to be. We bring those moments together in one welcoming place.</p>
+        <p>Make yourself at home in the kitchen, clubhouse, bar, or our seat-out area. There's a spot for the occasion, and space to make it your own.</p>
+        <a class="text-link" href="#enquire">Come spend some time <span class="link-arrow" aria-hidden="true">&#8594;</span></a>
+      </div>
+    </section>
+
+    <section class="spaces" id="spaces" aria-labelledby="spaces-title">
+      <div class="section-heading reveal">
+        <div>
+          <p class="eyebrow">Four ways to settle in</p>
+          <h2 id="spaces-title">Find your corner.</h2>
+        </div>
+        <p>Whether it's a table for two or a reason to bring everyone, there's room to make a day of it.</p>
+      </div>
+      <div class="space-grid">
+        <article class="space-card reveal">
+          <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1100&q=82" alt="A thoughtfully set table in a warm dining room" loading="lazy">
+          <div class="space-card-copy"><span>Gather around</span><h3>The Kitchen</h3></div>
+        </article>
+        <article class="space-card reveal">
+          <img src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&w=850&q=82" alt="Friends sharing time together around a table" loading="lazy">
+          <div class="space-card-copy"><span>Make it a get-together</span><h3>The Clubhouse</h3></div>
+        </article>
+        <article class="space-card reveal">
+          <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=850&q=82" alt="A warmly lit bar ready for an evening out" loading="lazy">
+          <div class="space-card-copy"><span>One more round</span><h3>The Bar</h3></div>
+        </article>
+        <article class="space-card reveal">
+          <img src="https://images.unsplash.com/photo-1445019980597-93fa8acb246c?auto=format&fit=crop&w=850&q=82" alt="A relaxed outdoor lounge surrounded by greenery" loading="lazy">
+          <div class="space-card-copy"><span>Take it outside</span><h3>Seat-out Area</h3></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="gather" id="gather">
+      <div class="gather-image" role="img" aria-label="A warmly lit lounge bar"></div>
+      <div class="gather-content reveal">
+        <p class="eyebrow">Bring your people</p>
+        <h2>Good company looks good on you.</h2>
+        <p>Birthday plans, a team get-together, or just an overdue catch-up. Tell us what you're thinking and we'll help you make room for it.</p>
+        <a class="text-link" href="#enquire">Let's plan something <span class="link-arrow" aria-hidden="true">&#8594;</span></a>
+      </div>
+    </section>
+
+    <section class="contact" id="enquire">
+      <div class="contact-copy reveal">
+        <p class="eyebrow">Your table is waiting</p>
+        <h2>What's the occasion?</h2>
+        <p>Send us a note about your visit or gathering, and we'll help you take it from there.</p>
+      </div>
+      <form class="contact-form reveal" id="enquiry-form">
+        <div class="field">
+          <label for="guest-name">Your name</label>
+          <input id="guest-name" name="name" autocomplete="name" required>
+        </div>
+        <div class="field">
+          <label for="guest-email">Email address</label>
+          <input id="guest-email" name="email" type="email" autocomplete="email" required>
+        </div>
+        <div class="field">
+          <label for="visit-type">I'm planning</label>
+          <select id="visit-type" name="occasion">
+            <option>A meal or a drink</option>
+            <option>A group gathering</option>
+            <option>A special occasion</option>
+            <option>Something else</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="visit-date">Preferred date</label>
+          <input id="visit-date" name="date" type="date">
+        </div>
+        <div class="field field-full">
+          <label for="visit-note">A little more about it</label>
+          <textarea id="visit-note" name="message" placeholder="Tell us what you have in mind"></textarea>
+        </div>
+        <button class="form-submit" type="submit">Prepare your enquiry <span aria-hidden="true">&#8594;</span></button>
+        <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <a class="wordmark" href="#top" aria-label="Metro Lounge by Rohi, back to top">
+      <span class="wordmark-seal" aria-hidden="true">M</span>
+      <span class="wordmark-name">Metro Lounge<span>by Rohi</span></span>
+    </a>
+    <p>Good food. Good company. Room to unwind.</p>
+    <a href="#top">Back to top &#8593;</a>
+  </footer>
+
+  <script>
+    const menuToggle = document.querySelector('.menu-toggle');
+    const mainNav = document.querySelector('.main-nav');
+
+    menuToggle.addEventListener('click', () => {
+      const isOpen = menuToggle.getAttribute('aria-expanded') === 'true';
+      menuToggle.setAttribute('aria-expanded', String(!isOpen));
+      mainNav.classList.toggle('open', !isOpen);
+    });
+
+    mainNav.addEventListener('click', (event) => {
+      if (event.target.closest('a')) {
+        menuToggle.setAttribute('aria-expanded', 'false');
+        mainNav.classList.remove('open');
+      }
+    });
+
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach((element) => revealObserver.observe(element));
+
+    document.querySelector('#enquiry-form').addEventListener('submit', (event) => {
+      event.preventDefault();
+      const form = new FormData(event.currentTarget);
+      const subject = encodeURIComponent(`Metro Lounge enquiry: ${form.get('occasion')}`);
+      const body = encodeURIComponent([
+        `Name: ${form.get('name')}`,
+        `Email: ${form.get('email')}`,
+        `Planning: ${form.get('occasion')}`,
+        `Preferred date: ${form.get('date') || 'Not specified'}`,
+        '',
+        form.get('message') || ''
+      ].join('\n'));
+      document.querySelector('#form-status').textContent = 'Your email app will open with the enquiry ready to address and send.';
+      window.location.href = `mailto:?subject=${subject}&body=${body}`;
+    });
+  </script>
+</body>
+</html>
